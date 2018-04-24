@@ -302,7 +302,7 @@ local function RemoveTextObjectListeners()
     answerTextObject:removeEventListener("touch", TouchListenerAnswer)
     wrongAnswer1TextObject:removeEventListener("touch", TouchListenerWrongAnswer1)
     wrongAnswer2TextObject:removeEventListener("touch", TouchListenerWrongAnswer2)  
-    wrongAnswer2TextObject:removeEventListener("touch", TouchListenerWrongAnswer3)
+    wrongAnswer3TextObject:removeEventListener("touch", TouchListenerWrongAnswer3)
 
 end
 
@@ -379,6 +379,7 @@ function scene:create( event )
     sceneGroup:insert( answerTextObject )
     sceneGroup:insert( wrongAnswer1TextObject )
     sceneGroup:insert( wrongAnswer2TextObject )
+    sceneGroup:insert( wrongAnswer3TextObject )
     sceneGroup:insert( congratulationText )
     sceneGroup:insert( correct )
     sceneGroup:insert( level1Text )
