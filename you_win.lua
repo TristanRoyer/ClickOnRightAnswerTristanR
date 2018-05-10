@@ -31,6 +31,10 @@ local scene = composer.newScene( sceneName )
 
 -- local variables for the scene
 local bkg
+ local youWinSound = audio.loadSound("Sounds/youWinSound.wav")
+ local youWinSoundChannel
+
+
 
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
@@ -44,8 +48,6 @@ local bkg
 -- The function called when the screen doesn't exist
 function scene:create( event )
 
-    -- Creating a group that associates objects with the scene
-    local sceneGroup = self.view
 
     -- Display background
     bkg = display.newImage("Images/You Win Screen.png")
@@ -53,10 +55,17 @@ function scene:create( event )
     bkg.y = display.contentCenterY
     bkg.width = display.contentWidth
     bkg.height = display.contentHeight
+   
+    -- Creating a group that associates objects with the scene
+    local sceneGroup = self.view
+
+
     -----------------------------------------------------------------------------------------     
 
     -- Associating display objects with this scene 
     sceneGroup:insert( bkg )
+    
+
 end
 
 -----------------------------------------------------------------------------------------
@@ -64,8 +73,13 @@ end
 -- The function called when the scene is issued to appear on screen
 function scene:show( event )
 
+
+
     -- Creating a group that associates objects with the scene
     local sceneGroup = self.view
+
+  
+
 
     -----------------------------------------------------------------------------------------
 
@@ -79,6 +93,8 @@ function scene:show( event )
     -----------------------------------------------------------------------------------------
 
     elseif ( phase == "did" ) then
+
+        youWinSoundChannel = audio.play(youWinSound)
 
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.

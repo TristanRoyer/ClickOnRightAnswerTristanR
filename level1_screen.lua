@@ -84,7 +84,8 @@ local alreadyClickedAnswer = false
 -----------------------------------------------------------------------------------------
 -- SOUND
 -----------------------------------------------------------------------------------------
-
+local backgroundMusic = audio.loadSound("Sounds/level1Music.wav")
+local backgroundMusicChannel
 
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
@@ -141,14 +142,7 @@ end
 
 end
 
--- Function that transitions to Lose Screen
-local function LoseScreenTransition( )        
-    composer.gotoScene( "you_lose", {effect = "zoomInOutFade", time = 1000})
-end 
 
-local function WinScreenTransiton( )
-        composer.gotoScene( "you_win", {effect = "zoomInOutFade", time = 1000})
-end 
 
 
 -- The function that displays the equation and determines the answer and the wrong answers
@@ -189,7 +183,7 @@ local function RestartScene()
         DisplayAnswers()
     end
     if (numberCorrect == 3) then
-        composer.gotoScene("you_win")
+       composer.gotoScene("you_win") 
 end
 end
 
@@ -403,8 +397,10 @@ function scene:show( event )
 
         -- Called when the scene is still off screen (but is about to come on screen).
     -----------------------------------------------------------------------------------------
-
+    
     elseif ( phase == "did" ) then
+
+        local backgroundMusicChannel = audio.play(backgroundMusic)
 
         -- initialize the number of lives and number correct 
         lives = 2
