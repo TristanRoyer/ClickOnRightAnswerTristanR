@@ -38,8 +38,9 @@ local scene = composer.newScene( sceneName )
 local bkg
 
 -- determine the range for the numbers to add
-local MIN_NUM = 1
-local MAX_NUM = 10
+local MIN_NUM = 2
+
+local MAX_NUM = 15
 
 -- the variables containing the first and second numbers to add for the equation
 local firstNumber
