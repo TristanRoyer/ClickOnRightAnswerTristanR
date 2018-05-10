@@ -87,7 +87,10 @@ local alreadyClickedAnswer = false
 -----------------------------------------------------------------------------------------
 local backgroundMusic = audio.loadSound("Sounds/level1Music.wav")
 local backgroundMusicChannel
-
+local correctSound = audio.loadSound("Sounds/CorrectAnswer.mp3")
+local correctSoundChannel
+local incorrectSound = audio.loadSound("Sounds/WrongBuzzer.mp3")
+local incorrectSoundChannel
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
 -----------------------------------------------------------------------------------------
@@ -204,6 +207,8 @@ local function TouchListenerAnswer(touch)
             numberCorrect = numberCorrect + 1
             -- call RestartScene after 1 second
             timer.performWithDelay( 1000, RestartScene )
+
+            correctSoundChannel = audio.play(correctSound)
         
         end        
 
@@ -227,6 +232,8 @@ local function TouchListenerWrongAnswer1(touch)
             -- call RestartScene after 1 second
             timer.performWithDelay( 1000, RestartScene ) 
 
+            incorrectSoundChannel = audio.play(incorrectSound)
+
                      
         end        
 
@@ -249,6 +256,9 @@ local function TouchListenerWrongAnswer2(touch)
                 lives = lives - 1
                 -- call RestartScene after 1 second
                 timer.performWithDelay( 1000, RestartScene )
+
+                            incorrectSoundChannel = audio.play(incorrectSound)
+
 
                           
             end        
@@ -274,7 +284,10 @@ local function TouchListenerWrongAnswer3(touch)
                 -- call RestartScene after 1 second
                 timer.performWithDelay( 1000, RestartScene )   
 
-                wrong.isVisible = true         
+                wrong.isVisible = true 
+
+                incorrectSoundChannel = audio.playSound(incorrectSound)
+        
             end        
     
         end
